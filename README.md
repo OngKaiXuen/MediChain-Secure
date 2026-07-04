@@ -24,35 +24,26 @@ schema.sql           # migrated schema (Argon2id credential column)
 composer.json / phpunit.xml
 ```
 
-## Setup
+## Setup (Windows)
 
 Requires **PHP 8.1+** with the `openssl` and `mbstring` extensions enabled, plus Composer.
-
-```bash
-composer install                # skip if vendor/ is already present
-cp .env.example .env            # then edit .env with real secrets
-mysql -u root -p < schema.sql   # optional: only needed to run search/auth against a DB
-```
-
-On **Windows (PowerShell)** the file-copy line is:
+Run the following in **PowerShell**:
 
 ```powershell
-Copy-Item .env.example .env
+composer install                      # skip if vendor/ is already present
+Copy-Item .env.example .env           # then edit .env with real secrets
+Get-Content schema.sql | mysql -u root -p   # optional: only needed to run search/auth against a DB
 ```
 
 Generate a strong master key:
 
-```bash
+```powershell
 php -r "echo base64_encode(random_bytes(32)), PHP_EOL;"
 ```
 
 ## Run the test suite
 
-```bash
-# macOS / Linux
-./vendor/bin/phpunit --testdox
-
-# Windows (PowerShell / CMD)
+```powershell
 php vendor/bin/phpunit --testdox
 ```
 
