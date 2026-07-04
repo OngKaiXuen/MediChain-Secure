@@ -26,10 +26,18 @@ composer.json / phpunit.xml
 
 ## Setup
 
+Requires **PHP 8.1+** with the `openssl` and `mbstring` extensions enabled, plus Composer.
+
 ```bash
-composer install
-cp .env.example .env          # then edit .env with real secrets
-mysql -u root -p < schema.sql # optional: only needed to run search/auth against a DB
+composer install                # skip if vendor/ is already present
+cp .env.example .env            # then edit .env with real secrets
+mysql -u root -p < schema.sql   # optional: only needed to run search/auth against a DB
+```
+
+On **Windows (PowerShell)** the file-copy line is:
+
+```powershell
+Copy-Item .env.example .env
 ```
 
 Generate a strong master key:
@@ -41,7 +49,11 @@ php -r "echo base64_encode(random_bytes(32)), PHP_EOL;"
 ## Run the test suite
 
 ```bash
+# macOS / Linux
 ./vendor/bin/phpunit --testdox
+
+# Windows (PowerShell / CMD)
+php vendor/bin/phpunit --testdox
 ```
 
 Expected: **OK (5 tests)** — an untampered encrypt/decrypt lifecycle, non-deterministic
