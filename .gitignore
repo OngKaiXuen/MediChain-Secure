@@ -1,0 +1,16 @@
+# --- Secrets: never track the real environment file ---
+.env
+
+# --- Dependencies (restored via `composer install`) ---
+/vendor/
+
+# --- Logs & runtime noise ---
+*.log
+error_log
+.phpunit.result.cache
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,23 @@
+{
+    "name": "medichain/e-medicvault-secure",
+    "description": "Post-incident hardened refactor of MediChain E-MedicVault (SECR4483 Alternative Assessment).",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.1",
+        "ext-openssl": "*",
+        "ext-mbstring": "*",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
